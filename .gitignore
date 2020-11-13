@@ -1,8 +1,1 @@
-
-*.class
-*.class
-*.class
-*.class
-/target/
-*.class
-target/classes/com/ttco/ui/BaseObject.class
+*/target/**
