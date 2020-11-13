@@ -30,23 +30,30 @@ public class BaseUI
 	public String getAttributeValue(String attr) throws Exception
 	{
 		obj.setData(attr);
-		obj.setActionToPerform(BaseObject.action.GET_ATTRIBUTE);		
-		return ele().getAttribute(attr);		
+		obj.setActionToPerform(BaseObject.action.GET_ATTRIBUTE);	
+		String attrValue = ele().getAttribute(attr);
+		
+		System.out.println(obj.getExecutionInfo());
+		return attrValue;		
 	}		
 	
 	public String getText() throws Exception
 	{
 		obj.setActionToPerform(BaseObject.action.GET_VALUE);		
-		return ele().getText();		
+		String ret = ele().getText();
+		obj.setValue(ret);
+
+		System.out.println(obj.getExecutionInfo());
+		return ret;		
 	}	
 	
 	public void setText(String data) throws Exception
 	{
-		setText(data,false);
-	}
-	public void setTextAndTab(String data) throws Exception
-	{
 		setText(data,true);
+	}
+	public void setTextWithoutTab(String data) throws Exception
+	{
+		setText(data,false);
 	}	
 	public void setText(String data,boolean tab) throws Exception
 	{
@@ -57,6 +64,7 @@ public class BaseUI
 		ele().sendKeys(data);		
 		if(tab)
 			ele().sendKeys(Keys.TAB);
+		System.out.println(obj.getExecutionInfo());
 			
 	}
 	
@@ -64,7 +72,9 @@ public class BaseUI
 	{
 		obj.setActionToPerform(BaseObject.action.CLICK);
 		waitFor();
-		ele().click();		
+		ele().click();	
+		System.out.println(obj.getExecutionInfo());
+		waitForPage();
 	}	
 	
 	public WebElement ele() throws Exception
