@@ -1,6 +1,7 @@
 package com.ttco.ui;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -65,7 +66,10 @@ public class Browser
 				break;
 			
 		}
-
+		
+		if(dr!=null)
+			dr.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
 		if(properties!=null && properties.size()>0)
 		{
 			// we will write code here for handling properties
@@ -76,21 +80,6 @@ public class Browser
 		}
 	}
 	
-	public void launch(String url)
-	{
-		if(dr!=null)
-			dr.get(url);
-	}
+
 	
-	public void quit()
-	{
-		if(dr!=null)
-			dr.quit();
-	}
-	
-	public void close()
-	{
-		if(dr!=null)
-			dr.close();
-	}
 }

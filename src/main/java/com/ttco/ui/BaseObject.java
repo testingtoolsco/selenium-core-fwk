@@ -134,6 +134,7 @@ public class BaseObject
 							
 	public static enum action {
 								CLICK,
+								CLICK_OPTIONAL,
 								SET_TEXT,
 								GET_TEXT,
 								SELECT_OPTION,
@@ -142,7 +143,8 @@ public class BaseObject
 								GET_OPTION_BY_VALUE,
 								GET_OPTION_BY_INDEX,
 								GET_SELECTED_OPTION,
-								GET_VALUE
+								GET_VALUE,
+								GET_ATTRIBUTE
 							};
 	
 	public By getBy()
@@ -229,6 +231,7 @@ public class BaseObject
 		
 		switch(actionToPerform)
 		{
+			case CLICK_OPTIONAL:	
 			case CLICK:
 				ret = "Clicked \"" + label  + "\" " + getType(); 
 				break;
@@ -256,6 +259,7 @@ public class BaseObject
 			case GET_SELECTED_OPTION:
 				ret = "Captured selected option \""+value+"\" from  \"" + label + "\" " + getType();				
 				break;
+			case GET_ATTRIBUTE:				
 			case GET_VALUE:
 				ret = "Captured \""+value+"\" from  \"" + label + "\" " + getType();
 				break;		
@@ -268,7 +272,7 @@ public class BaseObject
 	}
 	
 	
-	static class Builder
+	public static class Builder
 	{
 		String label;
 		String xpath;
@@ -281,7 +285,7 @@ public class BaseObject
 		
 		public Builder()
 		{
-			
+			occ = 1;
 		}
 		
 		public Builder label(String label)
@@ -353,4 +357,7 @@ public class BaseObject
 			return new BaseObject(this);
 		}
 	}
+
+
+	
 }
