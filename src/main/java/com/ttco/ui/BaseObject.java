@@ -11,7 +11,111 @@ public class BaseObject
 	type uiType;
 	action actionToPerform;
 	int occ; 
-	String data,value;
+	String data,value;	
+	
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getXpath() {
+		return xpath;
+	}
+
+	public void setXpath(String xpath) {
+		this.xpath = xpath;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLinkText() {
+		return linkText;
+	}
+
+	public void setLinkText(String linkText) {
+		this.linkText = linkText;
+	}
+
+	public String getPartialLinkText() {
+		return partialLinkText;
+	}
+
+	public void setPartialLinkText(String partialLinkText) {
+		this.partialLinkText = partialLinkText;
+	}
+
+	public type getUiType() {
+		return uiType;
+	}
+
+	public void setUiType(type uiType) {
+		this.uiType = uiType;
+	}
+
+	public action getActionToPerform() {
+		return actionToPerform;
+	}
+
+	public void setActionToPerform(action actionToPerform) {
+		this.actionToPerform = actionToPerform;
+	}
+
+	public int getOcc() {
+		return occ;
+	}
+
+	public void setOcc(int occ) {
+		this.occ = occ;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	
+	public BaseObject(Builder builder)
+	{
+		this.label = builder.label;
+		this.xpath = builder.xpath;
+		this.id    = builder.id;
+		this.name  = builder.name;
+		this.linkText 			= builder.linkText;
+		this.partialLinkText 	= builder.partialLinkText;
+		this.uiType 			= builder.uiType;
+		this.actionToPerform 	= builder.actionToPerform;
+		this.occ	 			= builder.occ;
+		this.data 				= builder.data;
+		this.value 				= builder.value;
+	}
 	
 	public static enum type {
 								TEXT_BOX, 
@@ -55,7 +159,17 @@ public class BaseObject
 		else if(partialLinkText!=null && !partialLinkText.equals(""))
 			by = By.partialLinkText(partialLinkText);
 		
+		else 
+			by = getCustomBy();
+		
 		return by;
+	}
+	
+	public By getCustomBy()
+	{
+		By by = null;
+		return by;
+				
 	}
 	
 	public String getType()
@@ -132,5 +246,92 @@ public class BaseObject
 		}
 				
 		return ret;
+	}
+	
+	
+	static class Builder
+	{
+		String label;
+		String xpath;
+		String id, name;
+		String linkText,partialLinkText;
+		type uiType;
+		action actionToPerform;
+		int occ; 
+		String data,value;		
+		
+		public Builder()
+		{
+			
+		}
+		
+		public Builder label(String label)
+		{
+			this.label = label;
+			return this;
+		}
+		
+		public Builder xpath(String xpath)
+		{
+			this.xpath = xpath;
+			return this;
+		}
+		
+		public Builder id(String id)
+		{
+			this.id = id;
+			return this;
+		}
+		public Builder name(String name)
+		{
+			this.name = name;
+			return this;
+		}
+				
+		public Builder linkText(String linkText)
+		{
+			this.linkText = linkText;
+			return this;
+		}
+		
+		public Builder paritalLinkText(String partialLinkText)
+		{
+			this.partialLinkText = partialLinkText;
+			return this;
+		}
+		
+		public Builder uiType(type uiType)
+		{
+			this.uiType = uiType;
+			return this;
+		}
+		
+		public Builder actionToPerform(action actionToPerform)
+		{
+			this.actionToPerform = actionToPerform;
+			return this;
+		}
+		
+		public Builder occ(int occ)
+		{
+			this.occ = occ;
+			return this;
+		}
+		
+		public Builder data(String data)
+		{
+			this.data = data;
+			return this;
+		}
+		public Builder value(String value)
+		{
+			this.value = value;
+			return this;
+		}
+		
+		public BaseObject build()
+		{
+			return new BaseObject(this);
+		}
 	}
 }
