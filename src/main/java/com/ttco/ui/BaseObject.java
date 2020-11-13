@@ -124,7 +124,12 @@ public class BaseObject
 								IMAGE, 
 								TEXT_AREA, 
 								DROP_DOWN, 
-								RADIO_BUTTON
+								RADIO_BUTTON,
+								BUTTON,
+								INPUT_BUTTON,
+								MENU,
+								MENU_ITEM,
+								ELEMENT
 							};
 							
 	public static enum action {
@@ -138,7 +143,7 @@ public class BaseObject
 								GET_OPTION_BY_INDEX,
 								GET_SELECTED_OPTION,
 								GET_VALUE
-								};
+							};
 	
 	public By getBy()
 	{
@@ -199,6 +204,19 @@ public class BaseObject
 			case RADIO_BUTTON:
 				ret = "Radio Button";
 				break;
+			case BUTTON:
+				ret = "Button";
+				break;
+			case INPUT_BUTTON:
+				ret = "Button";
+				break;				
+			case ELEMENT:
+				ret = "Element";
+				break;		
+			case MENU:
+				ret = "Menu";
+			case MENU_ITEM:
+				ret = "Menu Item";				
 			default:
 				break;
 		}
@@ -240,7 +258,8 @@ public class BaseObject
 				break;
 			case GET_VALUE:
 				ret = "Captured \""+value+"\" from  \"" + label + "\" " + getType();
-				break;				
+				break;		
+				
 			default:
 				break;
 		}
