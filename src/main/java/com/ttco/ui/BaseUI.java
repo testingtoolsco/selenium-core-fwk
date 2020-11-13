@@ -1,5 +1,5 @@
 package com.ttco.ui;
 
-public class Web {
+public class BaseUI {
 
 }

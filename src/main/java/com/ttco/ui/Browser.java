@@ -13,8 +13,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Browser 
 {
-
-
 	
 	public static enum type {CHROME,FIREFOX,IE,EDGE};
 	
@@ -74,7 +72,7 @@ public class Browser
 		}
 		else
 		{
-			
+			// default settings will come here if there are no properties passed
 		}
 	}
 	
